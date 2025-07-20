@@ -21,7 +21,7 @@ A TypeScript Express backend server with Morgan logging, CORS support, and secur
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/SagarKarmoker/nid-mock-server
 cd nid-mock-server
 ```
 
