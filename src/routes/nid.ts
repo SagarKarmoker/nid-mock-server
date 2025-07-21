@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
 });
 
 // Get NID by ID
-router.get('/id/:id', (req, res) => {
+router.get('/id/:id', (req, res): any => {
   /*  #swagger.tags = ['NID']
       #swagger.description = 'Retrieve a specific National ID record by internal ID'
       #swagger.parameters['id'] = {
@@ -126,7 +126,7 @@ router.get('/id/:id', (req, res) => {
 });
 
 // Get NID info by nidnumber and dob using query params
-router.post('/find', (req, res) => {
+router.post('/find', (req, res): any => {
   /*  #swagger.tags = ['NID']
       #swagger.description = 'Find a National ID record by NID number and date of birth'
       #swagger.requestBody = {
@@ -224,7 +224,7 @@ router.post('/find', (req, res) => {
 });
 
 // Get NID by NID number
-router.get('/find/:nidNumber', (req, res) => {
+router.get('/find/:nidNumber', (req, res): any => {
   try {
     const nids = loadNIDData();
     const nidNumber = req.params.nidNumber;
