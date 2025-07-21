@@ -18,6 +18,34 @@ const loadNIDData = () => {
 
 // Get all NIDs
 router.get('/', (req, res) => {
+  /*  #swagger.tags = ['NID']
+      #swagger.description = 'Retrieve all National ID records'
+      #swagger.responses[200] = {
+        description: 'Successfully retrieved all NID records',
+        schema: {
+          success: true,
+          count: 150,
+          data: [
+            {
+              id: 1,
+              nid: "1234567890123",
+              name: "John Doe",
+              father_name: "Father Name",
+              mother_name: "Mother Name", 
+              date_of_birth: "01/01/1990",
+              address: "123 Main St, City, Country"
+            }
+          ]
+        }
+      }
+      #swagger.responses[500] = {
+        description: 'Internal server error',
+        schema: {
+          success: false,
+          error: 'Failed to fetch NID data'
+        }
+      }
+  */
   try {
     const nids = loadNIDData();
     res.json({
@@ -35,6 +63,44 @@ router.get('/', (req, res) => {
 
 // Get NID by ID
 router.get('/id/:id', (req, res) => {
+  /*  #swagger.tags = ['NID']
+      #swagger.description = 'Retrieve a specific National ID record by internal ID'
+      #swagger.parameters['id'] = {
+        in: 'path',
+        description: 'Internal ID of the NID record',
+        required: true,
+        type: 'integer'
+      }
+      #swagger.responses[200] = {
+        description: 'Successfully retrieved NID record',
+        schema: {
+          success: true,
+          data: {
+            id: 1,
+            nid: "1234567890123",
+            name: "John Doe",
+            father_name: "Father Name",
+            mother_name: "Mother Name",
+            date_of_birth: "01/01/1990",
+            address: "123 Main St, City, Country"
+          }
+        }
+      }
+      #swagger.responses[404] = {
+        description: 'NID record not found',
+        schema: {
+          success: false,
+          error: 'NID not found'
+        }
+      }
+      #swagger.responses[500] = {
+        description: 'Internal server error',
+        schema: {
+          success: false,
+          error: 'Failed to fetch NID data'
+        }
+      }
+  */
   try {
     const nids = loadNIDData();
     const id = parseInt(req.params.id);
@@ -61,6 +127,68 @@ router.get('/id/:id', (req, res) => {
 
 // Get NID info by nidnumber and dob using query params
 router.post('/find', (req, res) => {
+  /*  #swagger.tags = ['NID']
+      #swagger.description = 'Find a National ID record by NID number and date of birth'
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              required: ["nidnumber", "dob"],
+              properties: {
+                nidnumber: {
+                  type: "string",
+                  description: "National ID number",
+                  example: "1234567890123"
+                },
+                dob: {
+                  type: "string",
+                  description: "Date of birth",
+                  example: "01/01/1990"
+                }
+              }
+            }
+          }
+        }
+      }
+      #swagger.responses[200] = {
+        description: 'Successfully found NID record',
+        schema: {
+          success: true,
+          data: {
+            id: 1,
+            nid: "1234567890123",
+            name: "John Doe",
+            father_name: "Father Name",
+            mother_name: "Mother Name",
+            date_of_birth: "01/01/1990",
+            address: "123 Main St, City, Country"
+          }
+        }
+      }
+      #swagger.responses[400] = {
+        description: 'Missing required parameters',
+        schema: {
+          success: false,
+          error: 'Missing required query parameters: nidnumber and dob'
+        }
+      }
+      #swagger.responses[404] = {
+        description: 'NID record not found',
+        schema: {
+          success: false,
+          error: 'NID not found'
+        }
+      }
+      #swagger.responses[500] = {
+        description: 'Internal server error',
+        schema: {
+          success: false,
+          error: 'Failed to fetch NID data'
+        }
+      }
+  */
   try {
     const nids = loadNIDData();
     const { nidnumber, dob } = req.body;
